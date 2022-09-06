@@ -1,0 +1,2 @@
+#!/bin/bash
+own --from=guillaume betty hello
