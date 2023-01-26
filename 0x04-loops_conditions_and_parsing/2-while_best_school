@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-let "less=1"
-while [[ $less -le 10 ]]
+# Write a Bash script that displays Best School 10 times.
+
+foo=1
+while [[ $foo -le 10 ]];
 do
 	echo "Best School"
-	((less++))
+	((foo++))
 done
