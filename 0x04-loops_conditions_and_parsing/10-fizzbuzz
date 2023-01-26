@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Write a Bash script that displays numbers from 1 to 100.
 
-for fb in {1..100};
+for fb in {1..100}
 do
 	if [[ $(( $fb % 3 )) -eq 0 && $(( $fb % 5)) -eq 0 ]];
 	then
