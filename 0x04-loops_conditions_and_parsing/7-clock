@@ -1,23 +1,16 @@
 #!/usr/bin/env bash
 # Write a Bash script that displays the time for 12 hours and 59 minutes:
 
-foo=1
-hour=12
-first=0
-echo "Hour: 0"
-while [[ $foo -ge 0 ]];
+hour=0
+
+while [[ $hour -le 12 ]];
 do
-	if [[ $foo -eq 60 ]];
-	then
-		((first+=1))
-		echo "Hour: $first"
-		((foo-=60))
-	else
-		echo "$foo"
-	fi
-	if [[ $first -eq 12 ]];
-	then
-		break
-	fi
-	((foo++))
+	echo "Hout: ${hour}"
+	minute=1
+	while [[ $minute -le 59 ]];
+	do
+		echo "${minute}"
+		((minute++))
+	done
+	((hour++))
 done
