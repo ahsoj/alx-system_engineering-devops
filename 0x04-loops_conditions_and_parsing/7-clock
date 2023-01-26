@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+let "foo=1"
+let "hour=12"
+let "first=0"
+echo "Hour: 0"
+while [[ $foo -ge 0 ]]
+do
+	if [[ $foo -eq 60 ]]
+	then
+		((first+=1))
+		echo "Hour: $first"
+		((foo-=60))
+	else
+		echo "$foo"
+	fi
+	((foo++))
+done
