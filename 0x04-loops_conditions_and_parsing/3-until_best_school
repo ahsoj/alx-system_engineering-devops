@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+let "less=1"
+until [[ $less -gt 10 ]]
+do
+	echo "Best School"
+	((less++))
+done 
