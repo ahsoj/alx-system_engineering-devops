@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+# Write a Bash script that displays Best School 10 times.
 
-for _ in {0..9}
+for _ in {0..9};
 do
 	echo "Best School"
 done
