@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-
-file=apache-access.log
-awk '{ print $1 " " $9}' $file
+# file=apache-access.log
+awk '{ print $1 " " $9}' apache-access.log 
