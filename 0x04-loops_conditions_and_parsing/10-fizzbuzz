@@ -3,7 +3,7 @@
 
 for fb in {1..100}
 do
-	if [[ $(( $fb % 3 )) -eq 0 && $(( $fb % 5)) -eq 0 ]];
+	if [[ $(( ${fb} % 3 )) -eq 0 ]] && [[ $(( ${fb} % 5)) -eq 0 ]];
 	then
 		echo "FizzBuzz"
 	elif [[ $(( $fb % 3)) -eq 0 ]];
