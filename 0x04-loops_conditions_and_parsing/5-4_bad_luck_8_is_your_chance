@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+let "foo=1"
+while [[ $foo -le 10 ]]
+do
+	if [[ $foo -eq 4 ]]
+	then
+		echo "bad luck"
+	elif [[ $foo -eq 8 ]]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	((foo++))
+done
