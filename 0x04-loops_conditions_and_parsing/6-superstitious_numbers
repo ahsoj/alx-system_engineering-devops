@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Write a Bash script that displays numbers from 1 to 20 and
 
-let "foo=1"
+foo=1
 while [[ $foo -le 20 ]];
 do
 	echo "$foo"
