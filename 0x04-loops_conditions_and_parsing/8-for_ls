@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-for item in $(ls)
-do
+for item in $(ls); do
 	echo "$item" | cut -d '-' -f2
 done
