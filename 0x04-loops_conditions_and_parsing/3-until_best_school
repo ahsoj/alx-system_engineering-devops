@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+# Write a Bash script that displays Best School 10 times.
 
-let "less=1"
-until [[ $less -gt 10 ]]
+les=1
+until [[ $les -gt 10 ]];
 do
 	echo "Best School"
-	((less++))
+	((les++))
 done 
