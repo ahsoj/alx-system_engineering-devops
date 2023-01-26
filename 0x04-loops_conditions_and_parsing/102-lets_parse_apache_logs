@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+file=apache-access.log
+echo "$(awk '{ print $1, " ", $9}' $file)"
