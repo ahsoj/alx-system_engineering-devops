@@ -11,7 +11,7 @@ do
 		echo "Fizz"
 	elif [[ $(( $fb % 5 )) -eq 0 ]];
 	then
-		echo "Bizz"
+		echo "Buzz"
 	else
 		echo "${fb}"
 	fi
