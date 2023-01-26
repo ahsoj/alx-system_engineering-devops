@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+let "foo=1"
+while [[ $foo -le 20 ]]
+do
+	echo "$foo"
+	case $foo in
+		4)
+		echo "bad luck from China"
+		  ;;
+		9)
+		echo "bad luck from Japan"
+		  ;;
+		17)
+		  echo "bad luck from Italy"
+		  ;;
+		*)
+		  ;;
+	esac
+	((foo++))
+done
