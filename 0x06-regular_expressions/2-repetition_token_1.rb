@@ -1,3 +1,3 @@
 #!/usr/bin/env ruby
 MatchValue = /hb?t?n/
-puts ARGV[0].scan(MatchValue).join
+puts ARGV[0].scan(/hb?t?n/).join
