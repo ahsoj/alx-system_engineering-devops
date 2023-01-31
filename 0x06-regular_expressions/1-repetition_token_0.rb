@@ -1,2 +1,3 @@
 #!/usr/bin/env ruby
-hbt{2,5}n
+MatchValue = /hbt{2,5}n/
+puts ARGV[0].scan(MatchValue).join
