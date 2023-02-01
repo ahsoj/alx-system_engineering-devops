@@ -1,0 +1,2 @@
+#!/usr/bon/env bash
+nc -l localhost 98
