@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
+#   22 for SSH
+#   80 for HTTP
+#   443 for HTTPS
+
 netstat -l -p
