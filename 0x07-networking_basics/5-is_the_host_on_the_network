@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-if [ $# -eq 0 ]
+#   Accepts a string as an argument
+#   Displays Usage: 5-is_the_host_on_the_network {IP_ADDRESS} if no argument passed
+#   Ping the IP 5 times
+
+if [[ $# -eq 0 ]];
 then
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
