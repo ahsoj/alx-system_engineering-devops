@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
+# Obviously, the IPs displayed may be 
+# different depending on which machine you are running the script on.
+# Note that we can see our localhost IP :)
+
 ifconfig | grep -Eo "inet (addr:)?([0-9]*\.){3}[0-9]*" | cut -b 11-
