@@ -1,0 +1,39 @@
+https://imgur.com/a/Ve1jY1q
+
+?1 What is server :
+	A server is a computer that handles a specific 
+	task or provides data to other computers over a
+	network
+
+?2 What is the role of the domain name:
+	A domain name is a unique name that identifies a
+	website or an online service
+	Domain names make it easier for people to remember
+	and access websites without typing long numerical 
+	addresses
+
+?3 What type of DNS record `www` is in `www.foobar.com`:
+	The www part of a domain name is usually an A record
+	that points to the IP address of a web server
+
+?4 What is the role of the web server:
+	A web server is a computer that stores, processes,
+	and delivers website files to web browsers
+
+?5 What is the role of the application server:
+	An application server is a server that hosts 
+	applications or software that deliver a business 
+	function through a communication protocol
+
+?6 What is the role of the database:
+	* Transforming raw data into useful information
+	* Distributing data and information to the right 
+	  people at the right time
+	* Preserving and monitoring data usage for adequate 
+	  periods of time
+	* Controlling data duplication and use, both internally 
+	  and externally
+
+?7 What is the server using to communicate with the computer of the user requesting -
+   the website
+	HTTP(HyperTextTransferProtocol) protocol
