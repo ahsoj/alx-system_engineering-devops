@@ -1,3 +1,4 @@
+![](https://imgur.com/a/Ve1jY1q)
 # Resources
 
 # Read or watch:
