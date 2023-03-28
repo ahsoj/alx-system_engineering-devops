@@ -3,4 +3,4 @@
 # Hello Holberton when querying the root of it
 
 echo "ServerName localhost" >> /etc/apache2.conf
-sudo service apache2 start
+service apache2 start
