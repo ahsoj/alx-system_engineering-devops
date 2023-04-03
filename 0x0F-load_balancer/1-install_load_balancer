@@ -4,8 +4,6 @@
 # Make sure that HAproxy can be managed via an init script
 sudo apt -y update
 sudo apt -y install haproxy
-sudo systemctl start haproxy
-sudo systemctl enable haproxy
 haproxy_config=\
 "
 global
@@ -42,6 +40,5 @@ backend nginx_server
         server web-01 52.91.871.103:80 check
         server web-02 18.400.248.251:80 check
 "
-sudo mv /etc/haproxy/haproxy.cfg{,.original}
 echo "$haproxy_config" > /etc/haproxy/haproxy.cfg
-sudo service haproxy restart
+sudo systemctl restart haproxy
