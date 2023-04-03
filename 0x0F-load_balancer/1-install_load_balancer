@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# Configure HAproxy so that it send traffic to web-01 and web-02
+# Distribute requests using a roundrobin algorithm
+# Make sure that HAproxy can be managed via an init script
+sudo apt -y update
+sudo apt -y install haproxy
+sudo systemctl start haproxy
+sudo systemctl enable haproxy
+haproxy_config=\
+"
+global
+        log 127.0.0.1 local0 notice
+        maxconn 2000
+        user haproxy
+        group haproxy
+
+defaults
+        log     global
+        mode    http
+        option  httplog
+        option  dontlognull
+        retries 3
+        option redispatch
+        timeout connect  5000
+        timeout client  10000
+        timeout server  10000
+        errorfile 400 /etc/haproxy/errors/400.http
+        errorfile 403 /etc/haproxy/errors/403.http
+        errorfile 408 /etc/haproxy/errors/408.http
+        errorfile 500 /etc/haproxy/errors/500.http
+        errorfile 502 /etc/haproxy/errors/502.http
+        errorfile 503 /etc/haproxy/errors/503.http
+        errorfile 504 /etc/haproxy/errors/504.http
+
+frontend nginx_front
+        bind *:80
+        default_backend nginx_server
+        option forwardfor
+
+backend nginx_server
+        balance roundrobin
+        server web-01 52.91.871.103:80 check
+        server web-02 18.400.248.251:80 check
+"
+sudo mv /etc/haproxy/haproxy.cfg{,.original}
+echo "$haproxy_config" > /etc/haproxy/haproxy.cfg
+sudo systemctl restart haproxy
