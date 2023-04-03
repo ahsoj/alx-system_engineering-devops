@@ -31,5 +31,5 @@ server_config=\
 }"
 
 echo "$server_config" > /etc/nginx/sites-enabled/default
-sudo systemctl reload nginx
-sudo systemctl restart nginx
+# sudo systemctl reload nginx
+sudo service nginx restart
