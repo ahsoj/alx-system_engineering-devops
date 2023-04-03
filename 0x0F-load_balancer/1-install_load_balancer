@@ -44,4 +44,4 @@ backend nginx_server
 "
 sudo mv /etc/haproxy/haproxy.cfg{,.original}
 echo "$haproxy_config" > /etc/haproxy/haproxy.cfg
-sudo systemctl restart haproxy
+sudo service haproxy restart
