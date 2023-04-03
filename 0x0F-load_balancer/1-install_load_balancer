@@ -16,8 +16,8 @@ frontend nginx_front
 
 backend nginx_server
         balance roundrobin
-        server 114870-web-01 52.91.871.103:80 check
-        server 114870-web-02 18.400.248.251:80 check
+        server 114870-web-01 52.91.136.103:80 check
+        server 114870-web-02 18.235.248.251:80 check
 "
 echo "$haproxy_config" >> /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
