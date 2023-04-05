@@ -6,7 +6,7 @@ sudo apt-get -y install --no-install-recommends software-properties-common
 sudo add-apt-repository -y ppa:vbernat/haproxy-2.4
 sudo apt -y install haproxy=2.4\*
 sudo apt update && sudo apt upgrade -y
-DOMAIN_NAME='beta-scribbles.tech'
+DOMAIN_NAME='eyasuc.tech'
 HAPROXY_CFG_FILE='/etc/haproxy/haproxy.cfg'
 HAPROXY_EN_FILE='/etc/default/haproxy'
 haproxy_enable=\
