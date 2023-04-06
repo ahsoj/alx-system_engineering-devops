@@ -11,14 +11,14 @@ fun () {
 
 domains=( 'www' 'lb-01' 'web-01' 'web-02' )
 
-if [[ $# -eq 1 ]];
+if [ $# -eq 1 ];
 then
     domain="$1"
     for i in "${domains[@]}"
     do
         fun "$i" "$domain"
     done
-elif [[ $# -eq 2 ]];
+elif [ $# -eq 2 ];
 then
     domain="$1"
     subdomain="$2"
