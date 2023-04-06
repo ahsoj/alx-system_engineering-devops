@@ -35,6 +35,7 @@ frontend eyasuc.tech_front_http
         bind *:80
         mode http
 	default_backend eyasuc.tech_server
+	http-request set-header X-Forwarded-Proto http unless { ssl_fc }
         option forwardfor
 
 frontend eyasuc.tech_front_https
