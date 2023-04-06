@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# “Terminating SSL on HAproxy” means that HAproxy is configured to handle encrypted traffic
+
+

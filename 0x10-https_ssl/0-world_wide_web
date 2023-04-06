@@ -2,10 +2,10 @@
 # Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01)
 
 fun () {
-    s_domain=$1
+    subdomain=$1
     domain=$2
    
-    dig "$s_domain.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$s_domain" \
+    dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 | awk -v s="$subomain" \
 	'BEGIN { FS = " " } ; { print "The subdomain" s " is a " $4 " record and points to " $5 }'
 }
 
@@ -21,6 +21,6 @@ then
 elif [[ $# -eq 2 ]];
 then
     domain="$1"
-    s_domain="$2"
-    fun "$s_domain" "$domain"
+    subdomain="$2"
+    fun "$subdomain" "$domain"
 fi
