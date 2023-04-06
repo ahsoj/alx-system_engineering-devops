@@ -1,0 +1,54 @@
+global
+        log 127.0.0.1 local0 notice
+        chroot /var/lib/haproxy
+        ca-base /etc/ssl/certs
+        crt-base /etc/ssl/private
+        stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+        stats timeout 30s
+        maxconn 2000
+        user haproxy
+        group haproxy
+
+        # generated 2023-04-06, Mozilla Guideline v5.6, HAProxy 2.0.3, OpenSSL 1.1.1k, intermediate configuration
+        # https://ssl-config.mozilla.org/#server=haproxy&version=2.0.3&config=intermediate&openssl=1.1.1k&guideline=5.6
+
+        # intermediate configuration
+        ssl-default-bind-ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-E>
+        ssl-default-bind-ciphersuites TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256
+        ssl-default-bind-options prefer-client-ciphers no-sslv3 no-tlsv10 no-tlsv11 no-tls-tickets
+        ssl-dh-param-file /etc/haproxy/dhparams.pem
+
+defaults
+        log     global
+        mode    http
+        option  httplog
+        option  dontlognull
+        retries 3
+        option redispatch
+        timeout connect  5000
+        timeout client   5000
+        timeout server   5000
+        errorfile 400 /etc/haproxy/errors/400.http
+        errorfile 403 /etc/haproxy/errors/403.http
+        errorfile 408 /etc/haproxy/errors/408.http
+        errorfile 500 /etc/haproxy/errors/500.http
+        errorfile 502 /etc/haproxy/errors/502.http
+        errorfile 503 /etc/haproxy/errors/503.http
+        errorfile 504 /etc/haproxy/errors/504.http
+
+frontend eyasuc.tech_front_http
+        bind *:80
+        default_backend eyasuc.tech_server
+        option forwardfor
+	redirect prefix https://eyasuc.tech code 301 if { hdr(host) -i http://eyasuc.tech }
+
+frontend eyasuc.tech_front_https
+        bind *:443 ssl crt /etc/ssl/eyasuc.tech.pem
+        http-request set-header X-Forwarded-Proto https
+        default_backend eyasuc.tech_server
+
+backend eyasuc.tech_server
+        balance roundrobin
+        server 114870-web-01 52.91.136.103:80 check
+        server 114870-web-02 18.235.248.251:80 check
+
