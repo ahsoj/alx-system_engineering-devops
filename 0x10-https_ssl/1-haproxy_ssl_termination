@@ -33,12 +33,14 @@ defaults
 
 frontend eyasuc.tech_front_http
         bind *:80
-        default_backend eyasuc.tech_server
+        mode http
+	default_backend eyasuc.tech_server
         option forwardfor
 
 frontend eyasuc.tech_front_https
         bind *:443 ssl crt /etc/ssl/eyasuc.tech.pem
-        http-request set-header X-Forwarded-Proto https
+        mode https
+	http-request set-header X-Forwarded-Proto https
         default_backend eyasuc.tech_server
 
 backend eyasuc.tech_server
