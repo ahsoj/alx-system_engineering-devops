@@ -8,14 +8,15 @@ global
         maxconn 2000
         user haproxy
         group haproxy
-
-        ssl-dh-param-file /etc/haproxy/dhparams.pem
+        tune.ssl.default-dh-param 2048
 
 defaults
         log     global
         mode    http
         option  httplog
         option  dontlognull
+        option  http-server-close
+        option  forwardfor
         retries 3
         option redispatch
         timeout connect  5000
@@ -33,10 +34,10 @@ frontend www.eyasuc.tech
         bind *:80
         bind *:443 ssl crt /etc/letsencrypt/live/eyasuc.tech/fullchain.pem
         timeout http-request    30s
-        http-request redirect scheme https unless { ssl_fc }
+        http-request redirect scheme https code 301 unless { ssl_fc }
         default_backend eyasuc.tech_server
 
 backend eyasuc.tech_server
         balance roundrobin
         server 114870-web-01 52.91.136.103:80 check
-	server 114870-web-02 18.235.248.251:80 check
+        server 114870-web-02 18.235.248.251:80 check
