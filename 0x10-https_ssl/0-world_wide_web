@@ -8,7 +8,7 @@ fun () {
     domain=$2
    
     dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:' | tail -1 \
-	| awk -v s="$subdomain" 'BEGIN { FS = " " } ; { print "The subdomain" s " is a " $4 " record and points to " $5 }'
+	| awk -v s="$subdomain" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5 }'
 }
 
 if [[ $# -eq 1 ]];
