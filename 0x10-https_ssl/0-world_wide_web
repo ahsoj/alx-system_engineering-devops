@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01)
 
-domains=( 'www' 'lb-01' 'web-01' 'web-02' )
+domains=( "www" "lb-01" "web-01" "web-02" )
 
-fun () {
+fun() {
     subdomain=$1
     domain=$2
    
@@ -20,7 +20,7 @@ then
     done
 elif [[ $# -eq 2 ]];
 then
-    domain="$1"
-    subdomain="$2"
+    domain=$1
+    subdomain=$2
     fun "$subdomain" "$domain"
 fi
