@@ -2,14 +2,11 @@
 # Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01)
 
 fun() {   
-    printf "The subdomain %s is a " "$2"
-    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $4 }'
-    printf " record and points to "
-    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk -F' ' '{ printf $5 }'
-    echo ""
+    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | tail -1 \
+        | awk -v s="$2" 'BEGIN { FS = " " } ; { print "The subdomain " s " is a " $4 " record and points to " $5 }'
 }
 
-if [[ -z $2 ]];
+if [ -z "$2" ];
 then
     for i in "www" "lb-01" "web-01" "web-02"
     do
