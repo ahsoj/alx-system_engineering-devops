@@ -3,6 +3,7 @@ global
         chroot /var/lib/haproxy
         ca-base /etc/ssl/certs
         crt-base /etc/ssl/private
+        stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
         stats timeout 30s
         maxconn 2000
         user haproxy
@@ -28,20 +29,14 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend eyasuc.tech_front_http
+frontend www.eyasuc.tech
         bind *:80
-        default_backend eyasuc.tech_server
-        option forwardfor
-	reqadd X-Forwarded-Proto:\ http
-	redirect prefix https://eyasuc.tech code 301 if { hdr(host) -i http://eyasuc.tech }
-
-frontend eyasuc.tech_front_https
-        bind *:443 ssl crt /etc/ssl/eyasuc.tech.pem
-        http-request set-header X-Forwarded-Proto https
+        bind *:443 ssl crt /etc/letsencrypt/live/eyasuc.tech/fullchain.pem
+        timeout http-request    30s
+        http-request redirect scheme https unless { ssl_fc }
         default_backend eyasuc.tech_server
 
 backend eyasuc.tech_server
         balance roundrobin
         server 114870-web-01 52.91.136.103:80 check
-        server 114870-web-02 18.235.248.251:80 check
-
+	server 114870-web-02 18.235.248.251:80 check
