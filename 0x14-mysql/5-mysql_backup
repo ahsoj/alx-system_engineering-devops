@@ -1,24 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Set the database credentials
 
 DB_USER="root"
-DB_PASS=$1 || "root"
+DB_PASS="$1"
 FILE_NAME="backup.sql"
 
 # Set the backup directory
 BACKUP_DIR="/var/backup/sql_backup"
 
 # Set the date format for the backup file name
-DATE=$(date +"%Y-%m-%d_%H-%M-%S")
+DATE=$(date +"%d-%m-%Y")
 
 # Create the backup directory if it doesn't exist
-mkdir -p $BACKUP_DIR
+#sudo mkdir -p $BACKUP_DIR
 
 # Generate the MySQL dump
-mysqldump --user=$DB_USER --password=$DB_PASS --all-database > $BACKUP_DIR/$FILE_NAME
+sudo mysqldump --user=$DB_USER --password=$DB_PASS --all-databases > $FILE_NAME # $BACKUP_DIR/$FILE_NAME
 
 # Compress the backup file
-tar -czvf $BACKUP_DIR/$DATE.tar.gz $BACKUP_DIR/$FILE_NAME
+sudo tar -czvf $DATE.tar.gz $FILE_NAME # $BACKUP_DIR/$FILE_NAME
 
 # Remove the uncompressed backup file
 # rm $BACKUP_DIR/$FILE_NAME
