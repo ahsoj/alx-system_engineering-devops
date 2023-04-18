@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 # lines or less 
-
 pkill -f apache2
 sudo chmod 644 /etc/nginx/nginx.conf
 sed -Ei 's/\s*#?\s*user .*/user nginx;/' /etc/nginx/nginx.conf
 sed -Ei 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-enabled/default
 sudo -u nginx service nginx restart
-
