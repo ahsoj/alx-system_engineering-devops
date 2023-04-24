@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """retrieve employee ID"""
 
-import requests
-import urllib
+import request
 
 
 if __name__ == "__main__":
@@ -22,4 +21,4 @@ if __name__ == "__main__":
     pron = "Employee {e_name} is done with tasks({n_done}/{n_task}):"
     print(pron.format(e_name=__url_2['name'], n_done=n_done, n_task=n_task))
     for i in range(len(__url)):
-        print("\t{}".format(__url[i]['title']))
+        print("\t {}".format(__url[i]['title']))
