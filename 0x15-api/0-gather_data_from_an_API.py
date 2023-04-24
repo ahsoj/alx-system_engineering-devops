@@ -20,7 +20,8 @@ def main(arg):
     pron = "Employee {e_name} is done with tasks({n_done}/{n_task}):"
     print(pron.format(e_name=__url_2['name'], n_done=n_done, n_task=n_task))
     for i in range(len(__url)):
-        print("\t {}".format(__url[i]['title']))
+        if __url[i]['completed'] is True:
+            print("\t {}".format(__url[i]['title']))
 
 
 if __name__ == "__main__":
