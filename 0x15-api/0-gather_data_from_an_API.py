@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """retrieve employee ID"""
 
-import request
+import requests
 
 
 if __name__ == "__main__":
