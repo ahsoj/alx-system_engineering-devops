@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """retrieve employee ID and save to csv file"""
 
-import requests
 import csv
+import requests
 
 
 def main(arg):
