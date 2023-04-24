@@ -20,7 +20,7 @@ def main(arg):
             __ = __url[i]
             output.writerow(
                      [__['userId'],
-                      __url_2['name'],
+                      __url_2['username'],
                       __['completed'],
                       __['title']])
 
