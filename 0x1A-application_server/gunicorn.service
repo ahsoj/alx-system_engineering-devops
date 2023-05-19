@@ -1,0 +1,11 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/AirBnB_clone_v4/web_dynamic
+ExecStart=gunicorn --access-logfile /tmp/airbnb-access.log --error-logfile /tmp/airbnb-error.log --workers 3 --bind unix:project.sock 2-hbnb:app
+[Install]
+WantedBy=multi-user.target
